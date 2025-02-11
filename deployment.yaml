@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 2  # run 2 pods
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: olegivanovych/kubernetes_test_api:latest  # image from Docker Hub
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
