@@ -3,7 +3,10 @@ FROM node:22
 WORKDIR /app
 
 COPY package.json package-lock.json ./
+
 RUN npm install --production
+
+RUN npm install -g @nestjs/cli
 
 COPY . .
 
